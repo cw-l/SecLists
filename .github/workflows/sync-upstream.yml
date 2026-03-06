@@ -2,7 +2,7 @@ name: Sync fork with upstream
 
 on:
   schedule:
-    - cron: '0 0 * * 0'  # weekly, Sunday midnight
+    - cron: '0 0 * * 0'
   workflow_dispatch:
 
 jobs:
@@ -13,6 +13,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
+          sparse-checkout: |
+            Discovery/Web-Content/raft-large-files.txt
+            Discovery/Web-Content/raft-large-directories.txt
       - name: Sync upstream
         run: |
           git remote add upstream https://github.com/danielmiessler/SecLists.git

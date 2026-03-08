@@ -18,6 +18,8 @@ jobs:
             Discovery/Web-Content/raft-large-directories.txt
       - name: Sync upstream
         run: |
+          git config user.email "github-actions@github.com"
+          git config user.name "GitHub Actions"
           git remote add upstream https://github.com/danielmiessler/SecLists.git
           git fetch upstream
           git merge upstream/master --no-edit

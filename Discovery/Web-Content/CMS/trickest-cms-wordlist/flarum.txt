@@ -136,6 +136,7 @@ extensions/gdpr/tests/unit/TypeTest.php
 extensions/gdpr/tests/unit/.gitkeep
 extensions/gdpr/tests/phpunit.integration.xml
 extensions/gdpr/tests/phpunit.unit.xml
+extensions/gdpr/tests/integration/console/ClearConfirmationIpsTest.php
 extensions/gdpr/tests/integration/setup.php
 extensions/gdpr/tests/integration/forum/ConfirmErasureTest.php
 extensions/gdpr/tests/integration/api/ExtenderTest.php
@@ -175,6 +176,7 @@ extensions/gdpr/src/Jobs/GdprJob.php
 extensions/gdpr/src/Models/Export.php
 extensions/gdpr/src/Models/ErasureRequest.php
 extensions/gdpr/src/Console/DailySchedule.php
+extensions/gdpr/src/Console/ClearConfirmationIps.php
 extensions/gdpr/src/Console/ProcessEraseRequests.php
 extensions/gdpr/src/Console/DestroyExportsCommand.php
 extensions/gdpr/src/ZipManager.php
@@ -206,6 +208,7 @@ extensions/gdpr/src/Contracts/DataType.php
 extensions/gdpr/src/StorageManager.php
 extensions/gdpr/src/Access/ErasureRequestPolicy.php
 extensions/gdpr/src/Access/UserPolicy.php
+extensions/gdpr/migrations/2026_03_06_000000_add_confirmation_ip_to_gdpr_erasure_table.php
 extensions/gdpr/migrations/2024_11_03_000001_remove_previous_migration_keys.php
 extensions/gdpr/migrations/2024_10_31_000002_add_anonymized_column_to_user_table.php
 extensions/gdpr/migrations/2024_11_03_000002_modify_erasure_table_set_verification_token_nullable.php
@@ -441,6 +444,7 @@ extensions/tags/less/admin/EditTagModal.less
 extensions/tags/less/admin.less
 extensions/tags/less/forum/TagTiles.less
 extensions/tags/less/forum/ToggleButton.less
+extensions/tags/less/forum/TagPost.less
 extensions/tags/less/forum/TagCloud.less
 extensions/tags/less/forum/TagHero.less
 extensions/tags/locale/en.yml
@@ -570,7 +574,7 @@ extensions/tags/js/src/forum/addTagFilter.tsx
 extensions/tags/js/src/forum/extend.ts
 extensions/tags/js/src/forum/utils/getSelectableTags.ts
 extensions/tags/js/src/forum/forum.ts
-extensions/tags/js/src/forum/components/TagHero.js
+extensions/tags/js/src/forum/components/TagHero.tsx
 extensions/tags/js/src/forum/components/ToggleButton.js
 extensions/tags/js/src/forum/components/TagDiscussionModal.tsx
 extensions/tags/js/src/forum/components/TagsPage.tsx
@@ -661,6 +665,7 @@ extensions/flags/composer.json
 extensions/package-manager/extend.php
 extensions/package-manager/tests/fixtures/.gitkeep
 extensions/package-manager/tests/unit/.gitkeep
+extensions/package-manager/tests/unit/RequireExtensionCompatibilityTest.php
 extensions/package-manager/tests/phpunit.integration.xml
 extensions/package-manager/tests/phpunit.unit.xml
 extensions/package-manager/tests/integration/setup.php
@@ -674,6 +679,7 @@ extensions/package-manager/tests/integration/api/extensions/RequireExtensionTest
 extensions/package-manager/tests/integration/api/extensions/UpdateExtensionTest.php
 extensions/package-manager/tests/integration/api/MajorUpdateTest.php
 extensions/package-manager/tests/integration/api/GlobalUpdateTest.php
+extensions/package-manager/tests/integration/api/TaskResourceTest.php
 extensions/package-manager/tests/integration/api/MinorUpdateTest.php
 extensions/package-manager/tests/integration/api/CheckForUpdatesTest.php
 extensions/package-manager/assets/flarum.svg
@@ -728,6 +734,7 @@ extensions/package-manager/src/WhyNotValidator.php
 extensions/package-manager/src/Support/Util.php
 extensions/package-manager/src/Exception/CannotFetchExternalExtension.php
 extensions/package-manager/src/Exception/ExtensionAlreadyInstalledException.php
+extensions/package-manager/src/Exception/ExtensionIncompatibleWithFlarumException.php
 extensions/package-manager/src/Exception/MajorUpdateFailedException.php
 extensions/package-manager/src/Exception/NoNewMajorVersionException.php
 extensions/package-manager/src/Exception/ComposerCommandFailedException.php
@@ -1133,6 +1140,7 @@ extensions/messages/js/dist-typings/forum/components/MessageComposer.d.ts
 extensions/messages/js/dist-typings/forum/components/DialogsDropdown.d.ts
 extensions/messages/js/dist-typings/forum/components/MessagesSidebar.d.ts
 extensions/messages/js/dist-typings/forum/components/Message.d.ts
+extensions/messages/js/dist-typings/forum/components/MessagesPageHero.d.ts
 extensions/messages/js/dist-typings/forum/components/DialogList.d.ts
 extensions/messages/js/dist-typings/forum/components/DetailsModal.d.ts
 extensions/messages/js/dist-typings/forum/components/DialogSection.d.ts
@@ -1168,6 +1176,7 @@ extensions/messages/js/src/forum/components/Message.tsx
 extensions/messages/js/src/forum/components/MessagesPage.tsx
 extensions/messages/js/src/forum/components/MessageStream.tsx
 extensions/messages/js/src/forum/components/DetailsModal.tsx
+extensions/messages/js/src/forum/components/MessagesPageHero.tsx
 extensions/messages/js/src/forum/components/DialogsDropdown.tsx
 extensions/messages/js/src/forum/components/MessagesSidebar.tsx
 extensions/messages/js/src/forum/components/DialogSection.tsx
@@ -1720,6 +1729,7 @@ framework/core/src/User/Guest.php
 framework/core/src/User/SessionManager.php
 framework/core/src/User/SessionDriverInterface.php
 framework/core/src/User/AccountActivationMailerTrait.php
+framework/core/src/User/Console/ConvertAvatarsToWebpCommand.php
 framework/core/src/User/UserRepository.php
 framework/core/src/User/UserValidator.php
 framework/core/src/User/LoginProvider.php
@@ -1745,6 +1755,8 @@ framework/core/src/User/Throttler/EmailActivationThrottler.php
 framework/core/src/User/Throttler/PasswordResetThrottler.php
 framework/core/src/User/Throttler/EmailChangeThrottler.php
 framework/core/src/User/PasswordToken.php
+framework/core/src/User/Avatar/DefaultDriver.php
+framework/core/src/User/Avatar/DriverInterface.php
 framework/core/src/User/AvatarValidator.php
 framework/core/src/User/SelfDemotionGuard.php
 framework/core/src/User/Search/Filter/EmailFilter.php
@@ -2289,6 +2301,7 @@ framework/core/js/tests/unit/common/extend.test.ts
 framework/core/js/tests/unit/common/utils/extractText.test.ts
 framework/core/js/tests/unit/common/utils/Translator.test.ts
 framework/core/js/tests/unit/common/utils/abbreviateNumber.test.ts
+framework/core/js/tests/unit/common/utils/haptic.test.ts
 framework/core/js/tests/unit/common/utils/string.test.ts
 framework/core/js/tests/unit/common/helpers/highlight.test.ts
 framework/core/js/tests/unit/common/helpers/listItems.test.ts
@@ -2370,6 +2383,7 @@ framework/core/js/dist-typings/common/utils/generateElementId.d.ts
 framework/core/js/dist-typings/common/utils/ScrollListener.d.ts
 framework/core/js/dist-typings/common/utils/a11y.d.ts
 framework/core/js/dist-typings/common/utils/RequestError.d.ts
+framework/core/js/dist-typings/common/utils/haptic.d.ts
 framework/core/js/dist-typings/common/utils/anchorScroll.d.ts
 framework/core/js/dist-typings/common/utils/mapRoutes.d.ts
 framework/core/js/dist-typings/common/utils/throttleDebounce.d.ts
@@ -2573,6 +2587,7 @@ framework/core/js/dist-typings/forum/components/PostStreamScrubber.d.ts
 framework/core/js/dist-typings/forum/components/NotificationsPage.d.ts
 framework/core/js/dist-typings/forum/components/ComposerButton.d.ts
 framework/core/js/dist-typings/forum/components/AvatarEditor.d.ts
+framework/core/js/dist-typings/forum/components/Hero.d.ts
 framework/core/js/dist-typings/forum/components/LogInButton.d.ts
 framework/core/js/dist-typings/forum/components/EventPost.d.ts
 framework/core/js/dist-typings/forum/components/NotificationGrid.d.ts
@@ -2730,6 +2745,7 @@ framework/core/js/src/common/utils/generateElementId.ts
 framework/core/js/src/common/utils/extract.ts
 framework/core/js/src/common/utils/focusTrap.ts
 framework/core/js/src/common/utils/ScrollListener.js
+framework/core/js/src/common/utils/haptic.ts
 framework/core/js/src/common/utils/EditorDriverInterface.ts
 framework/core/js/src/common/ExportRegistry.ts
 framework/core/js/src/common/models/Group.ts
@@ -2902,6 +2918,7 @@ framework/core/js/src/forum/components/PostListItem.tsx
 framework/core/js/src/forum/components/IndexSidebar.tsx
 framework/core/js/src/forum/components/UserSecurityPage.tsx
 framework/core/js/src/forum/components/GlobalUsersSearchSource.tsx
+framework/core/js/src/forum/components/Hero.tsx
 framework/core/js/src/forum/components/IndexPage.tsx
 framework/core/js/src/forum/components/PostMeta.tsx
 framework/core/js/src/forum/components/GlobalPostsSearchSource.tsx
@@ -2926,7 +2943,6 @@ framework/core/js/src/forum/components/PostEdited.js
 framework/core/js/src/forum/components/NotificationsPage.tsx
 framework/core/js/src/forum/components/NotificationGrid.js
 framework/core/js/src/forum/components/WelcomeHero.tsx
-framework/core/js/src/forum/components/DiscussionHero.js
 framework/core/js/src/forum/components/LogInButton.js
 framework/core/js/src/forum/components/RenameDiscussionModal.tsx
 framework/core/js/src/forum/components/Search.tsx
@@ -2944,6 +2960,7 @@ framework/core/js/src/forum/components/ComposerBody.tsx
 framework/core/js/src/forum/components/UserPage.tsx
 framework/core/js/src/forum/components/PostsPage.tsx
 framework/core/js/src/forum/components/ComposerButton.js
+framework/core/js/src/forum/components/DiscussionHero.tsx
 framework/core/js/src/forum/components/HeaderListGroup.tsx
 framework/core/js/src/forum/components/TerminalPost.js
 framework/core/js/src/forum/components/GlobalSearch.tsx
@@ -3014,8 +3031,10 @@ CHANGELOG.md
 js-packages/webpack-config/tests/compiler.js
 js-packages/webpack-config/tests/src/common/foos/exportFrom.js
 js-packages/webpack-config/tests/src/common/foos/exportFromWithNamedExports.js
+js-packages/webpack-config/tests/src/common/foos/asyncAnonymous.js
 js-packages/webpack-config/tests/src/common/foos/namedExports.js
 js-packages/webpack-config/tests/src/common/foos/exportDefaultFrom.js
+js-packages/webpack-config/tests/src/common/foos/asyncNamed.js
 js-packages/webpack-config/tests/src/common/Test.js
 js-packages/webpack-config/tests/src/common/bars/index.js
 js-packages/webpack-config/tests/src/common/bars/Acme.js
@@ -3047,9 +3066,9 @@ js-packages/jest-config/README.md
 js-packages/jest-config/shims.d.ts
 js-packages/jest-config/index.cjs
 js-packages/jest-config/LICENSE
-js-packages/jest-config/src/boostrap/admin.js
-js-packages/jest-config/src/boostrap/forum.js
-js-packages/jest-config/src/boostrap/common.js
+js-packages/jest-config/src/bootstrap/admin.js
+js-packages/jest-config/src/bootstrap/forum.js
+js-packages/jest-config/src/bootstrap/common.js
 js-packages/jest-config/tsconfig.json
 js-packages/jest-config/package.json
 .gitattributes

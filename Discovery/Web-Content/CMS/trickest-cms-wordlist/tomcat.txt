@@ -746,6 +746,7 @@ test/org/apache/tomcat/util/http/parser/TestPriority.java
 test/org/apache/tomcat/util/http/parser/TesterHostPerformance.java
 test/org/apache/tomcat/util/http/parser/TestTE.java
 test/org/apache/tomcat/util/http/parser/TestAuthorizationDigest.java
+test/org/apache/tomcat/util/http/parser/TestChunkExtension.java
 test/org/apache/tomcat/util/http/parser/TestHttpParser.java
 test/org/apache/tomcat/util/http/parser/TestTokenList.java
 test/org/apache/tomcat/util/http/parser/TestMediaType.java
@@ -772,9 +773,11 @@ test/org/apache/tomcat/util/json/TestJSONFilter.java
 test/org/apache/tomcat/util/net/TesterSupport.java
 test/org/apache/tomcat/util/net/TestSSLHostConfigCompat.java
 test/org/apache/tomcat/util/net/user3-crl-long.jks
+test/org/apache/tomcat/util/net/ocsp/TesterOcspResponderServlet.java
 test/org/apache/tomcat/util/net/ocsp/TestOcspSoftFail.java
 test/org/apache/tomcat/util/net/ocsp/ocsp-responder.lock
 test/org/apache/tomcat/util/net/ocsp/TestOcspEnabled.java
+test/org/apache/tomcat/util/net/ocsp/TestOcspSoftFailTryLater.java
 test/org/apache/tomcat/util/net/ocsp/TestOcspTimeout.java
 test/org/apache/tomcat/util/net/ocsp/OcspBaseTest.java
 test/org/apache/tomcat/util/net/ocsp/TesterOcspResponder.java
@@ -805,7 +808,6 @@ test/org/apache/tomcat/util/net/TestSSLHostConfigProtocol.java
 test/org/apache/tomcat/util/net/keystore-password
 test/org/apache/tomcat/util/net/TestKeyManagerWrappingFips.java
 test/org/apache/tomcat/util/net/TestSSLHostConfig.java
-test/org/apache/tomcat/util/net/index.db.attr
 test/org/apache/tomcat/util/net/localhost-ec-key.pem
 test/org/apache/tomcat/util/net/ca-cert.pem
 test/org/apache/tomcat/util/net/ocsp-responder-rsa-key.pem
@@ -3417,6 +3419,7 @@ java/org/apache/tomcat/util/http/parser/LocalStrings_es.properties
 java/org/apache/tomcat/util/http/parser/HttpHeaderParser.java
 java/org/apache/tomcat/util/http/parser/MediaTypeCache.java
 java/org/apache/tomcat/util/http/parser/Authorization.java
+java/org/apache/tomcat/util/http/parser/ChunkExtension.java
 java/org/apache/tomcat/util/http/parser/TE.java
 java/org/apache/tomcat/util/http/parser/LocalStrings.properties
 java/org/apache/tomcat/util/http/parser/LocalStrings_ru.properties

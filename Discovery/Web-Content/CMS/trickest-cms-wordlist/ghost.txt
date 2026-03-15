@@ -3,6 +3,10 @@ compose.dev.mailgun.yaml
 .vscode/launch.json
 .cursor/rules/yarn.mdc
 Dockerfile.production
+e2e/visual-regression/.auth/.gitkeep
+e2e/visual-regression/playwright.config.ts
+e2e/visual-regression/auth.setup.ts
+e2e/visual-regression/capture-baselines.spec.ts
 e2e/types.d.ts
 e2e/tests/post-factory.test.ts
 e2e/tests/global.setup.ts
@@ -1678,6 +1682,7 @@ ghost/core/core/server/api/endpoints/utils/serializers/input/db.js
 ghost/core/core/server/api/endpoints/utils/serializers/input/emails.js
 ghost/core/core/server/api/endpoints/utils/serializers/input/integrations.js
 ghost/core/core/server/api/endpoints/utils/serializers/input/settings.js
+ghost/core/core/server/api/endpoints/utils/api-filter-utils.ts
 ghost/core/core/server/api/endpoints/feedback-members.js
 ghost/core/core/server/api/endpoints/pages.js
 ghost/core/core/server/api/endpoints/slugs.js
@@ -1755,6 +1760,7 @@ ghost/core/core/shared/labs.js
 ghost/core/core/boot.js
 ghost/core/.npmignore
 ghost/core/.eslintignore
+ghost/core/bin/create-migration.js
 ghost/core/bin/minify-assets.js
 ghost/core/test/.eslintignore
 ghost/core/test/e2e-frontend/member-stats.test.js
@@ -1907,6 +1913,7 @@ ghost/core/test/unit/frontend/web/routers/serve-favicon.test.js
 ghost/core/test/unit/frontend/apps/private-blogging/controller.test.js
 ghost/core/test/unit/frontend/apps/private-blogging/input-password.test.js
 ghost/core/test/unit/frontend/apps/private-blogging/middleware.test.js
+ghost/core/test/unit/bin/create-migration.test.js
 ghost/core/test/unit/server/data/db/backup.test.js
 ghost/core/test/unit/server/data/seeders/data-generator.test.js
 ghost/core/test/unit/server/data/importer/handlers/importer-content-file-handler.test.js
@@ -1942,6 +1949,7 @@ ghost/core/test/unit/server/lib/image/gravatar.test.js
 ghost/core/test/unit/server/lib/image/cached-image-size-from-url.test.js
 ghost/core/test/unit/server/lib/get-inbox-links.test.ts
 ghost/core/test/unit/server/lib/bootstrap-socket.test.js
+ghost/core/test/unit/server/services/outbox/jobs/lib/process-entries.test.js
 ghost/core/test/unit/server/services/outbox/handlers/member-created.test.js
 ghost/core/test/unit/server/services/outbox/index.test.js
 ghost/core/test/unit/server/services/koenig/node-renderers.test.js
@@ -3180,6 +3188,7 @@ ghost/admin/tests/unit/mixins/validation-engine-test.js
 ghost/admin/tests/unit/utils/member-event-types-test.js
 ghost/admin/tests/unit/utils/merge-stats-by-date-test.js
 ghost/admin/tests/unit/utils/subscription-data-test.js
+ghost/admin/tests/unit/utils/asset-base-test.js
 ghost/admin/tests/unit/utils/sentry-test.js
 ghost/admin/tests/unit/utils/ghost-paths-test.js
 ghost/admin/tests/unit/transforms/navigation-settings-test.js
@@ -3243,6 +3252,7 @@ ghost/admin/tests/integration/components/gh-notifications-test.js
 ghost/admin/tests/integration/components/gh-cm-editor-test.js
 ghost/admin/tests/integration/components/gh-psm-template-select-test.js
 ghost/admin/tests/integration/components/gh-form-group-test.js
+ghost/admin/tests/integration/components/gh-members-segment-select-test.js
 ghost/admin/tests/integration/components/gh-task-button-test.js
 ghost/admin/tests/integration/components/gh-date-time-picker-test.js
 ghost/admin/tests/integration/components/gh-psm-tags-input-test.js
@@ -3253,6 +3263,7 @@ ghost/admin/tests/integration/components/gh-image-uploader-with-preview-test.js
 ghost/admin/tests/integration/components/gh-member-avatar-test.js
 ghost/admin/tests/integration/components/gh-unsplash-test.js
 ghost/admin/tests/integration/components/gh-trim-focus-input-test.js
+ghost/admin/tests/integration/components/gh-members-recipient-select-test.js
 ghost/admin/tests/integration/helpers/activity-feed-fetcher-test.js
 ghost/admin/tests/integration/helpers/gh-url-preview-test.js
 ghost/admin/tests/integration/helpers/background-image-style-test.js
@@ -3858,6 +3869,7 @@ ghost/admin/app/mixins/shortcuts-route.js
 ghost/admin/app/mixins/validation-state.js
 ghost/admin/app/utils/analytics.js
 ghost/admin/app/utils/route.js
+ghost/admin/app/utils/asset-base.js
 ghost/admin/app/utils/window-proxy.js
 ghost/admin/app/utils/publish-options.js
 ghost/admin/app/utils/merge-stats-by-date.js
@@ -4011,6 +4023,7 @@ ghost/admin/app/components/tags/tag-form.js
 ghost/admin/app/components/tags/tag-form.hbs
 ghost/admin/app/components/tags/list-item.hbs
 ghost/admin/app/components/tags/delete-tag-modal.hbs
+ghost/admin/app/components/gh-segment-token-input.js
 ghost/admin/app/components/modal-post-success.js
 ghost/admin/app/components/gh-member-details.hbs
 ghost/admin/app/components/gh-view-title.js
@@ -4265,6 +4278,7 @@ ghost/admin/app/components/gh-editor-feature-image.hbs
 ghost/admin/app/components/gh-task-button.hbs
 ghost/admin/app/components/gh-post-settings-menu.hbs
 ghost/admin/app/components/koenig-lexical-editor-input.js
+ghost/admin/app/components/gh-segment-token-input.hbs
 ghost/admin/app/components/render-in-wormhole.js
 ghost/admin/app/components/gh-error-message.hbs
 ghost/admin/app/components/offers/segment-select.js
@@ -4551,6 +4565,7 @@ apps/admin-x-settings/test/unit/utils/bluesky-urls.test.ts
 apps/admin-x-settings/test/unit/utils/analytics.test.ts
 apps/admin-x-settings/test/unit/utils/link-to-github-releases.test.ts
 apps/admin-x-settings/test/unit/utils/facebook-urls.test.ts
+apps/admin-x-settings/test/unit/components/settings/growth/offers/offer-helpers.test.ts
 apps/admin-x-settings/test/unit/api/custom-theme-settings.test.ts
 apps/admin-x-settings/test/utils/files/routes.yml
 apps/admin-x-settings/test/utils/files/upload.zip
@@ -4596,6 +4611,7 @@ apps/admin-x-settings/test/acceptance/advanced/integrations/first-promoter.test.
 apps/admin-x-settings/test/acceptance/email/default-recipients.test.ts
 apps/admin-x-settings/test/acceptance/email/mailgun.test.ts
 apps/admin-x-settings/test/acceptance/email/newsletters.test.ts
+apps/admin-x-settings/test/acceptance/email/email-settings.test.ts
 apps/admin-x-settings/test/acceptance/layout.test.ts
 apps/admin-x-settings/test/acceptance/membership/offers.test.ts
 apps/admin-x-settings/test/acceptance/membership/signup-embed.test.ts
@@ -4806,6 +4822,7 @@ apps/admin-x-settings/src/components/settings/membership/portal/look-and-feel.ts
 apps/admin-x-settings/src/components/settings/membership/portal/portal-frame.tsx
 apps/admin-x-settings/src/components/settings/membership/member-emails/test-email-dropdown.tsx
 apps/admin-x-settings/src/components/settings/membership/member-emails/welcome-email-modal.tsx
+apps/admin-x-settings/src/components/settings/membership/member-emails/welcome-email-customize-modal.tsx
 apps/admin-x-settings/src/components/settings/membership/member-emails/member-email-editor.tsx
 apps/admin-x-settings/src/components/settings/membership/analytics.tsx
 apps/admin-x-settings/src/components/top-level-group.tsx
@@ -4819,7 +4836,6 @@ apps/admin-x-settings/index.html
 apps/admin-x-settings/tsconfig.json
 apps/admin-x-settings/tsconfig.declaration.json
 apps/admin-x-settings/package.json
-apps/posts/postcss.config.cjs
 apps/posts/test/setup.ts
 apps/posts/test/unit/hooks/use-post-success-modal.test.tsx
 apps/posts/test/unit/hooks/use-edit-links.test.tsx
@@ -4845,6 +4861,7 @@ apps/posts/.eslintrc.cjs
 apps/posts/vite.config.mjs
 apps/posts/src/providers/posts-app-context.tsx
 apps/posts/src/providers/post-analytics-context.tsx
+apps/posts/src/hooks/use-label-picker.ts
 apps/posts/src/hooks/use-feature-flag.tsx
 apps/posts/src/hooks/with-feature-flag.tsx
 apps/posts/src/hooks/use-post-referrers.ts
@@ -4864,6 +4881,9 @@ apps/posts/src/utils/kpi-helpers.ts
 apps/posts/src/utils/constants.ts
 apps/posts/src/utils/chart-helpers.ts
 apps/posts/src/utils/get-site-timezone.ts
+apps/posts/src/components/label-picker/label-filter-renderer.tsx
+apps/posts/src/components/label-picker/label-picker.tsx
+apps/posts/src/components/label-picker/index.ts
 apps/posts/src/components/member-avatar.tsx
 apps/posts/src/components/layout/main-layout.tsx
 apps/posts/src/components/errors/posts-error-boundary.tsx
@@ -4957,7 +4977,6 @@ apps/announcement-bar/src/components/main.js
 apps/announcement-bar/src/components/announcement-bar.js
 apps/announcement-bar/src/components/preview.js
 apps/announcement-bar/package.json
-apps/activitypub/postcss.config.cjs
 apps/activitypub/.eslintignore
 apps/activitypub/test/unit/utils/posts.test.ts
 apps/activitypub/test/unit/utils/screenshot.test.ts
@@ -5108,6 +5127,7 @@ apps/portal/test/unit/components/pages/signin-page.test.js
 apps/portal/test/unit/components/pages/signup-page.test.js
 apps/portal/test/unit/components/pages/account-profile-page.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/account-actions.test.js
+apps/portal/test/unit/components/pages/AccountHomePage/continue-subscription-button.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/account-welcome.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/account-home-page.test.js
 apps/portal/test/unit/components/pages/AccountHomePage/paid-account-actions.test.js
@@ -5249,6 +5269,7 @@ apps/portal/jsconfig.json
 apps/portal/package.json
 apps/portal/.env
 apps/admin-x-framework/test/setup.ts
+apps/admin-x-framework/test/unit/hooks/use-pintura-config.test.ts
 apps/admin-x-framework/test/unit/hooks/use-form.test.ts
 apps/admin-x-framework/test/unit/hooks/use-koenig-fetch-embed.test.ts
 apps/admin-x-framework/test/unit/hooks/use-tinybird-token.test.tsx
@@ -5283,6 +5304,7 @@ apps/admin-x-framework/src/providers/app-provider.tsx
 apps/admin-x-framework/src/providers/navigation-stack-provider.tsx
 apps/admin-x-framework/src/providers/routing-provider.tsx
 apps/admin-x-framework/src/hooks/use-active-visitors.ts
+apps/admin-x-framework/src/hooks/use-pintura-config.ts
 apps/admin-x-framework/src/hooks/use-koenig-link-suggestions.ts
 apps/admin-x-framework/src/hooks/use-handle-error.ts
 apps/admin-x-framework/src/hooks/use-tinybird-query.ts
@@ -5389,7 +5411,6 @@ apps/admin/tsconfig.app.json
 apps/admin/tsconfig.node.json
 apps/admin/vite-ember-assets.ts
 apps/admin/README.md
-apps/admin/postcss.config.js
 apps/admin/vite-backend-proxy.ts
 apps/admin/src/providers/app-provider.tsx
 apps/admin/src/assets/videos/logo-loader-dark.mp4
@@ -5989,7 +6010,6 @@ apps/admin-x-design-system/tsconfig.json
 apps/admin-x-design-system/tsconfig.declaration.json
 apps/admin-x-design-system/package.json
 apps/admin-x-design-system/vite.config.ts
-apps/stats/postcss.config.cjs
 apps/stats/.eslintignore
 apps/stats/test/setup.ts
 apps/stats/test/unit/setup.ts
@@ -6089,8 +6109,10 @@ apps/comments-ui/.cursor/rules/playwright-e2e.mdc
 apps/comments-ui/test/e2e/pagination.test.ts
 apps/comments-ui/test/e2e/editor.test.ts
 apps/comments-ui/test/e2e/permalink.test.ts
+apps/comments-ui/test/e2e/comment-submission.test.ts
 apps/comments-ui/test/e2e/labs.test.ts
 apps/comments-ui/test/e2e/content.test.ts
+apps/comments-ui/test/e2e/reply-refetch.test.ts
 apps/comments-ui/test/e2e/main-form.test.ts
 apps/comments-ui/test/e2e/admin-moderation.test.ts
 apps/comments-ui/test/e2e/options.test.ts

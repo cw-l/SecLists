@@ -65,9 +65,6 @@ erpnext/manufacturing/doctype/plant_floor/plant_floor.js
 erpnext/manufacturing/doctype/plant_floor/stock_summary_template.html
 erpnext/manufacturing/doctype/plant_floor/__init__.py
 erpnext/manufacturing/doctype/plant_floor/plant_floor.py
-erpnext/manufacturing/doctype/bom_scrap_item/bom_scrap_item.json
-erpnext/manufacturing/doctype/bom_scrap_item/__init__.py
-erpnext/manufacturing/doctype/bom_scrap_item/bom_scrap_item.py
 erpnext/manufacturing/doctype/production_plan_sub_assembly_item/production_plan_sub_assembly_item.py
 erpnext/manufacturing/doctype/production_plan_sub_assembly_item/__init__.py
 erpnext/manufacturing/doctype/production_plan_sub_assembly_item/production_plan_sub_assembly_item.json
@@ -207,9 +204,6 @@ erpnext/manufacturing/doctype/workstation_operating_component/workstation_operat
 erpnext/manufacturing/doctype/workstation_operating_component/__init__.py
 erpnext/manufacturing/doctype/workstation_operating_component/workstation_operating_component.js
 erpnext/manufacturing/doctype/workstation_operating_component/workstation_operating_component.py
-erpnext/manufacturing/doctype/job_card_scrap_item/job_card_scrap_item.json
-erpnext/manufacturing/doctype/job_card_scrap_item/__init__.py
-erpnext/manufacturing/doctype/job_card_scrap_item/job_card_scrap_item.py
 erpnext/manufacturing/doctype/master_production_schedule/master_production_schedule.js
 erpnext/manufacturing/doctype/master_production_schedule/__init__.py
 erpnext/manufacturing/doctype/master_production_schedule/master_production_schedule.json
@@ -270,6 +264,9 @@ erpnext/manufacturing/doctype/workstation_cost/test_workstation_cost.py
 erpnext/manufacturing/doctype/workstation_cost/__init__.py
 erpnext/manufacturing/doctype/workstation_cost/workstation_cost.py
 erpnext/manufacturing/doctype/workstation_cost/workstation_cost.json
+erpnext/manufacturing/doctype/bom_secondary_item/bom_secondary_item.py
+erpnext/manufacturing/doctype/bom_secondary_item/__init__.py
+erpnext/manufacturing/doctype/bom_secondary_item/bom_secondary_item.json
 erpnext/manufacturing/doctype/bom_update_tool/bom_update_tool.py
 erpnext/manufacturing/doctype/bom_update_tool/__init__.py
 erpnext/manufacturing/doctype/bom_update_tool/test_bom_update_tool.py
@@ -279,6 +276,9 @@ erpnext/manufacturing/doctype/bom_item/bom_item.json
 erpnext/manufacturing/doctype/bom_item/README.md
 erpnext/manufacturing/doctype/bom_item/__init__.py
 erpnext/manufacturing/doctype/bom_item/bom_item.py
+erpnext/manufacturing/doctype/job_card_secondary_item/__init__.py
+erpnext/manufacturing/doctype/job_card_secondary_item/job_card_secondary_item.json
+erpnext/manufacturing/doctype/job_card_secondary_item/job_card_secondary_item.py
 erpnext/manufacturing/module_onboarding/manufacturing_onboarding/manufacturing_onboarding.json
 erpnext/manufacturing/report/open_work_orders/__init__.py
 erpnext/manufacturing/report/open_work_orders/open_work_orders.json
@@ -1050,9 +1050,6 @@ erpnext/startup/boot.py
 erpnext/subcontracting/workspace/subcontracting/subcontracting.json
 erpnext/subcontracting/dashboard_chart/subcontracting_order/subcontracting_order.json
 erpnext/subcontracting/__init__.py
-erpnext/subcontracting/doctype/subcontracting_inward_order_scrap_item/__init__.py
-erpnext/subcontracting/doctype/subcontracting_inward_order_scrap_item/subcontracting_inward_order_scrap_item.json
-erpnext/subcontracting/doctype/subcontracting_inward_order_scrap_item/subcontracting_inward_order_scrap_item.py
 erpnext/subcontracting/doctype/subcontracting_inward_order/subcontracting_inward_order_list.js
 erpnext/subcontracting/doctype/subcontracting_inward_order/subcontracting_inward_order.json
 erpnext/subcontracting/doctype/subcontracting_inward_order/subcontracting_inward_order_dashboard.py
@@ -1082,6 +1079,9 @@ erpnext/subcontracting/doctype/subcontracting_order/subcontracting_order.js
 erpnext/subcontracting/doctype/subcontracting_order/subcontracting_order_dashboard.py
 erpnext/subcontracting/doctype/subcontracting_order/subcontracting_order.json
 erpnext/subcontracting/doctype/subcontracting_order/subcontracting_order.py
+erpnext/subcontracting/doctype/subcontracting_inward_order_secondary_item/subcontracting_inward_order_secondary_item.json
+erpnext/subcontracting/doctype/subcontracting_inward_order_secondary_item/__init__.py
+erpnext/subcontracting/doctype/subcontracting_inward_order_secondary_item/subcontracting_inward_order_secondary_item.py
 erpnext/subcontracting/doctype/subcontracting_inward_order_service_item/subcontracting_inward_order_service_item.py
 erpnext/subcontracting/doctype/subcontracting_inward_order_service_item/subcontracting_inward_order_service_item.json
 erpnext/subcontracting/doctype/subcontracting_inward_order_service_item/__init__.py
@@ -1399,6 +1399,7 @@ erpnext/desktop_icon/projects.json
 erpnext/desktop_icon/subcontracting.json
 erpnext/desktop_icon/share_management.json
 erpnext/desktop_icon/accounts_setup.json
+erpnext/desktop_icon/organization.json
 erpnext/desktop_icon/financial_reports.json
 erpnext/desktop_icon/banking.json
 erpnext/desktop_icon/support.json
@@ -1575,6 +1576,7 @@ erpnext/public/desktop_icons/support.svg
 erpnext/public/desktop_icons/selling.svg
 erpnext/public/desktop_icons/accounting.svg
 erpnext/public/desktop_icons/crm.svg
+erpnext/public/icons/desktop_icons/subtle/account_setup.svg
 erpnext/public/icons/desktop_icons/subtle/banking.svg
 erpnext/public/icons/desktop_icons/subtle/projects.svg
 erpnext/public/icons/desktop_icons/subtle/assets.svg
@@ -1587,6 +1589,7 @@ erpnext/public/icons/desktop_icons/subtle/manufacturing.svg
 erpnext/public/icons/desktop_icons/subtle/budget.svg
 erpnext/public/icons/desktop_icons/subtle/stock.svg
 erpnext/public/icons/desktop_icons/subtle/accounts_setup.svg
+erpnext/public/icons/desktop_icons/subtle/organaisation.svg
 erpnext/public/icons/desktop_icons/subtle/subcontracting.svg
 erpnext/public/icons/desktop_icons/subtle/buying.svg
 erpnext/public/icons/desktop_icons/subtle/erpnext_settings.svg
@@ -1596,8 +1599,10 @@ erpnext/public/icons/desktop_icons/subtle/selling.svg
 erpnext/public/icons/desktop_icons/subtle/accounting.svg
 erpnext/public/icons/desktop_icons/subtle/payments.svg
 erpnext/public/icons/desktop_icons/subtle/crm.svg
+erpnext/public/icons/desktop_icons/solid/account_setup.svg
 erpnext/public/icons/desktop_icons/solid/banking.svg
 erpnext/public/icons/desktop_icons/solid/projects.svg
+erpnext/public/icons/desktop_icons/solid/organization.svg
 erpnext/public/icons/desktop_icons/solid/assets.svg
 erpnext/public/icons/desktop_icons/solid/share_management.svg
 erpnext/public/icons/desktop_icons/solid/invoicing.svg
@@ -1983,6 +1988,7 @@ erpnext/workspace_sidebar/projects.json
 erpnext/workspace_sidebar/subcontracting.json
 erpnext/workspace_sidebar/share_management.json
 erpnext/workspace_sidebar/accounts_setup.json
+erpnext/workspace_sidebar/organization.json
 erpnext/workspace_sidebar/financial_reports.json
 erpnext/workspace_sidebar/banking.json
 erpnext/workspace_sidebar/support.json
@@ -2042,8 +2048,6 @@ erpnext/accounts/print_format/payment_receipt_voucher/payment_receipt_voucher.ht
 erpnext/accounts/print_format/__init__.py
 erpnext/accounts/print_format/pos_invoice/__init__.py
 erpnext/accounts/print_format/pos_invoice/pos_invoice.json
-erpnext/accounts/print_format/point_of_sale/point_of_sale.json
-erpnext/accounts/print_format/point_of_sale/__init__.py
 erpnext/accounts/print_format/sales_invoice_with_item_image/sales_invoice_with_item_image.json
 erpnext/accounts/print_format/sales_invoice_with_item_image/__init__.py
 erpnext/accounts/print_format/sales_invoice_print/sales_invoice_print.json
@@ -4019,6 +4023,7 @@ erpnext/selling/onboarding_step/view_stock_balance_report/view_stock_balance_rep
 erpnext/controllers/budget_controller.py
 erpnext/controllers/tests/test_item_wise_inventory_account.py
 erpnext/controllers/tests/test_item_variant.py
+erpnext/controllers/tests/test_taxes_and_totals.py
 erpnext/controllers/tests/test_transaction_base.py
 erpnext/controllers/tests/test_reactivity.py
 erpnext/controllers/tests/test_queries.py
@@ -4209,6 +4214,7 @@ erpnext/patches/v16_0/migrate_transaction_deletion_task_flags_to_status.py
 erpnext/patches/v16_0/add_new_stock_entry_types.py
 erpnext/patches/v16_0/complete_onboarding_steps_for_older_sites.py
 erpnext/patches/v16_0/update_order_qty_and_requested_qty_based_on_mr_and_po.py
+erpnext/patches/v16_0/enable_serial_batch_setting.py
 erpnext/patches/v16_0/set_valuation_method_on_companies.py
 erpnext/patches/v16_0/set_reporting_currency.py
 erpnext/patches/v16_0/update_currency_exchange_settings_for_frankfurter.py
@@ -4219,6 +4225,7 @@ erpnext/patches/v16_0/fix_barcode_typo.py
 erpnext/patches/v16_0/migrate_tax_withholding_data.py
 erpnext/patches/v16_0/rename_subcontracted_quantity.py
 erpnext/patches/v16_0/set_ordered_qty_in_quotation_item.py
+erpnext/patches/v16_0/co_by_product_patch.py
 erpnext/patches/v16_0/add_accounting_dimensions_to_journal_template_accounts.py
 erpnext/patches/v16_0/update_company_custom_field_in_bin.py
 erpnext/patches/v16_0/set_post_change_gl_entries_on_pos_settings.py
@@ -4719,6 +4726,7 @@ erpnext/setup/doctype/sales_partner/test_sales_partner.py
 erpnext/setup/doctype/sales_partner/__init__.py
 erpnext/setup/doctype/sales_partner/sales_partner.js
 erpnext/setup/doctype/sales_partner/test_records.json
+erpnext/setup/module_onboarding/organization_onboarding/organization_onboarding.json
 erpnext/setup/utils.py
 erpnext/setup/demo_data/item.json
 erpnext/setup/demo_data/customer_group.json
@@ -4730,6 +4738,11 @@ erpnext/setup/demo_data/customer.json
 erpnext/setup/demo_data/item_group.json
 erpnext/setup/demo_data/supplier.json
 erpnext/setup/demo_data/supplier_group.json
+erpnext/setup/onboarding_step/invite_users/invite_users.json
+erpnext/setup/onboarding_step/setup_email_account/setup_email_account.json
+erpnext/setup/onboarding_step/review_system_settings/review_system_settings.json
+erpnext/setup/onboarding_step/setup_role_permissions/setup_role_permissions.json
+erpnext/setup/onboarding_step/setup_company/setup_company.json
 erpnext/erpnext_integrations/custom/contact.json
 erpnext/erpnext_integrations/__init__.py
 erpnext/erpnext_integrations/doctype/plaid_settings/plaid_settings.js

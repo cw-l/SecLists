@@ -518,6 +518,7 @@ tests/setup/jest-api.setup.js
 .yarnrc.yml
 CODE_OF_CONDUCT.md
 lerna.json
+sonar-project.properties
 docker-compose.dev.yml
 templates/website/data/lead-form-submissions.json
 templates/website/data/uploads/undraw-design-page.svg
@@ -1820,6 +1821,7 @@ packages/core/content-manager/admin/src/features/DocumentRBAC.tsx
 packages/core/content-manager/admin/src/utils/tests/attributes.test.ts
 packages/core/content-manager/admin/src/utils/tests/api.test.ts
 packages/core/content-manager/admin/src/utils/tests/users.test.ts
+packages/core/content-manager/admin/src/utils/tests/conditionalFields.test.ts
 packages/core/content-manager/admin/src/utils/tests/objects.test.ts
 packages/core/content-manager/admin/src/utils/translations.ts
 packages/core/content-manager/admin/src/utils/relations.ts
@@ -1829,6 +1831,7 @@ packages/core/content-manager/admin/src/utils/validation.ts
 packages/core/content-manager/admin/src/utils/users.ts
 packages/core/content-manager/admin/src/utils/objects.ts
 packages/core/content-manager/admin/src/utils/urls.ts
+packages/core/content-manager/admin/src/utils/conditionalFields.ts
 packages/core/content-manager/admin/src/utils/strings.ts
 packages/core/content-manager/admin/src/history/tests/mockData.ts
 packages/core/content-manager/admin/src/history/tests/server.ts
@@ -2332,6 +2335,7 @@ packages/core/content-releases/admin/src/pluginId.ts
 packages/core/content-releases/admin/src/translations/tests/plural.test.ts
 packages/core/content-releases/admin/src/translations/en.json
 packages/core/content-releases/admin/src/translations/uk.json
+packages/core/content-releases/admin/src/translations/es.json
 packages/core/content-releases/admin/src/utils/tests/prefixPluginTranslations.test.ts
 packages/core/content-releases/admin/src/utils/tests/time.test.ts
 packages/core/content-releases/admin/src/utils/time.ts
@@ -2566,6 +2570,7 @@ packages/core/review-workflows/admin/src/index.ts
 packages/core/review-workflows/admin/src/router.tsx
 packages/core/review-workflows/admin/src/translations/en.json
 packages/core/review-workflows/admin/src/translations/uk.json
+packages/core/review-workflows/admin/src/translations/es.json
 packages/core/review-workflows/admin/src/utils/tests/colors.test.ts
 packages/core/review-workflows/admin/src/utils/translations.ts
 packages/core/review-workflows/admin/src/utils/cm-hooks.ts
@@ -4004,8 +4009,10 @@ packages/core/strapi/src/cli/commands/build.ts
 packages/core/strapi/src/cli/types.ts
 packages/core/strapi/src/index.ts
 packages/core/strapi/src/admin-test.ts
+packages/core/strapi/src/node/core/linked-packages.ts
 packages/core/strapi/src/node/core/errors.ts
 packages/core/strapi/src/node/core/env.ts
+packages/core/strapi/src/node/core/resolve-module.ts
 packages/core/strapi/src/node/core/managers.ts
 packages/core/strapi/src/node/core/timer.ts
 packages/core/strapi/src/node/core/plugins.ts
@@ -4986,6 +4993,7 @@ packages/plugins/color-picker/admin/src/translations/zh.json
 packages/plugins/color-picker/admin/src/translations/sv.json
 packages/plugins/color-picker/admin/src/translations/en.json
 packages/plugins/color-picker/admin/src/translations/uk.json
+packages/plugins/color-picker/admin/src/translations/es.json
 packages/plugins/color-picker/admin/src/translations/ru.json
 packages/plugins/color-picker/admin/src/utils/getTrad.ts
 packages/plugins/color-picker/admin/src/utils/prefixPluginTranslations.ts

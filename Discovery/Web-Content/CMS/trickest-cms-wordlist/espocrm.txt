@@ -359,6 +359,7 @@ tests/unit/Espo/Tools/Meeting/IcsTest.php
 tests/unit/Espo/ORM/MysqlQueryComposerTest.php
 tests/unit/Espo/ORM/EntityTest.php
 tests/unit/Espo/ORM/SqlExecutorTest.php
+tests/unit/Espo/ORM/UtilTest.php
 tests/unit/Espo/ORM/BaseLockerTest.php
 tests/unit/Espo/ORM/MapperTest.php
 tests/unit/Espo/ORM/MetadataTest.php
@@ -482,6 +483,7 @@ tests/integration/Core/ApiClient.php
 tests/integration/Core/BaseTestCase.php
 tests/integration/Core/DataLoader.php
 tests/integration/Espo/Role/ServiceTest.php
+tests/integration/Espo/Stream/RecordTest.php
 tests/integration/Espo/Stream/AuditTest.php
 tests/integration/Espo/Stream/ReactionsTest.php
 tests/integration/Espo/Note/AclTest.php
@@ -547,6 +549,7 @@ tests/integration/Espo/Record/DuplicateFindTest.php
 tests/integration/Espo/Record/AssignmentTest.php
 tests/integration/Espo/Record/EntityProviderTest.php
 tests/integration/Espo/Record/LinkTest.php
+tests/integration/Espo/Record/CascadeRemovalTest.php
 tests/integration/Espo/Record/FieldValidationTest.php
 tests/integration/Espo/Record/RestoreDeletedTest.php
 tests/integration/Espo/Record/DefaultsPopulatorTest.php
@@ -1526,6 +1529,7 @@ client/src/field-manager.js
 client/src/view-helper.js
 client/src/model-factory.js
 client/src/ajax.js
+client/src/models/notification.js
 client/src/models/preferences.js
 client/src/models/user.js
 client/src/models/settings.js
@@ -1537,6 +1541,7 @@ client/src/helpers/record/list/column-width-control.js
 client/src/helpers/record/list/column-resize.js
 client/src/helpers/record/misc/sticky-bar.js
 client/src/helpers/record/select-related.js
+client/src/helpers/site/window-panel-helper.js
 client/src/helpers/site/tabs.js
 client/src/helpers/site/shortcut-manager.js
 client/src/helpers/site/modal-bar-provider.js
@@ -1791,6 +1796,7 @@ client/src/views/user-security/modals/two-factor-email.js
 client/src/views/user-security/modals/two-factor-sms.js
 client/src/views/lead-capture-log-record/modals/detail.js
 client/src/views/site/footer.js
+client/src/views/site/navbar/last-viewed.js
 client/src/views/site/navbar/item.js
 client/src/views/site/navbar/quick-create.js
 client/src/views/site/master.js
@@ -2305,11 +2311,13 @@ client/src/views/notification/fields/container.js
 client/src/views/notification/fields/read-with-menu.js
 client/src/views/notification/fields/read.js
 client/src/views/notification/items/system.js
+client/src/views/notification/items/group-note.js
 client/src/views/notification/items/entity-removed.js
 client/src/views/notification/items/message.js
 client/src/views/notification/items/collaborating.js
 client/src/views/notification/items/base.js
 client/src/views/notification/items/email-received.js
+client/src/views/notification/items/group-email-received.js
 client/src/views/notification/items/assign.js
 client/src/views/notification/items/email-inbox.js
 client/src/views/notification/items/user-reaction.js
@@ -2339,6 +2347,7 @@ client/src/views/email-template/fields/insert-field.js
 client/src/views/portal-user/list.js
 client/src/views/list-with-categories.js
 client/src/dynamic-logic.js
+client/src/collections/notification.js
 client/src/collections/tree.js
 client/src/collections/note.js
 client/src/router.js
@@ -5462,6 +5471,7 @@ application/Espo/Core/Acl/AssignmentChecker/AssignmentCheckerManager.php
 application/Espo/Core/Acl/GlobalRestriction.php
 application/Espo/Core/Acl/AccessReadChecker.php
 application/Espo/Core/Upgrades/ExtensionManager.php
+application/Espo/Core/Upgrades/Migrations/V9_4/AfterUpgrade.php
 application/Espo/Core/Upgrades/Migrations/V8_1/AfterUpgrade.php
 application/Espo/Core/Upgrades/Migrations/V8_2/AfterUpgrade.php
 application/Espo/Core/Upgrades/Migrations/V7_5/Prepare.php
@@ -5775,6 +5785,7 @@ application/Espo/Core/Record/DeleteParamsFetcher.php
 application/Espo/Core/Record/Collection.php
 application/Espo/Core/Record/DeleteParams.php
 application/Espo/Core/Record/Deleted/Restorer.php
+application/Espo/Core/Record/Deleted/RestorerFactory.php
 application/Espo/Core/Record/Deleted/DefaultRestorer.php
 application/Espo/Core/Record/Input/FilterProvider.php
 application/Espo/Core/Record/Input/Filter.php
@@ -6104,7 +6115,6 @@ application/Espo/Core/ORM/AttributeExtractorFactory.php
 application/Espo/Core/ORM/ConfigDataProvider.php
 application/Espo/Core/ORM/Repository/Option/SaveOption.php
 application/Espo/Core/ORM/Repository/Option/RemoveOption.php
-application/Espo/Core/ORM/Repository/Option/SaveContext.php
 application/Espo/Core/ORM/Repository/HookMediator.php
 application/Espo/Core/ORM/ValueFactoryFactory.php
 application/Espo/Core/WebSocket/SubscriberFactory.php
@@ -7122,12 +7132,15 @@ application/Espo/Tools/EmailNotification/Processor.php
 application/Espo/Tools/EmailNotification/AssignmentProcessor.php
 application/Espo/Tools/Notification/NoteMentionHookProcessor.php
 application/Espo/Tools/Notification/Service.php
+application/Espo/Tools/Notification/GroupAllService.php
 application/Espo/Tools/Notification/RecordService.php
 application/Espo/Tools/Notification/CollaboratorsNotificator.php
 application/Espo/Tools/Notification/NoteHookProcessor.php
 application/Espo/Tools/Notification/HookProcessor.php
 application/Espo/Tools/Notification/HookProcessor/Params.php
+application/Espo/Tools/Notification/Api/GetGroupAll.php
 application/Espo/Tools/Notification/Api/GetGroup.php
+application/Espo/Tools/Notification/Api/DeleteGroup.php
 application/Espo/Tools/Notification/GroupService.php
 application/Espo/Tools/Email/Service.php
 application/Espo/Tools/Email/Folder.php
@@ -7344,6 +7357,7 @@ application/Espo/ORM/Repository/Option/UnrelateOptions.php
 application/Espo/ORM/Repository/Option/SaveOption.php
 application/Espo/ORM/Repository/Option/MassRelateOptions.php
 application/Espo/ORM/Repository/Option/SaveOptions.php
+application/Espo/ORM/Repository/Option/SaveContext.php
 application/Espo/ORM/Repository/Option/RelateOptions.php
 application/Espo/ORM/Repository/Option/RemoveOptions.php
 application/Espo/ORM/Repository/HookMediator.php
@@ -7353,6 +7367,7 @@ application/Espo/ORM/Repository/RDBRepository.php
 application/Espo/ORM/Repository/Deprecation/RDBRepositoryDeprecationTrait.php
 application/Espo/ORM/Repository/RDBSelectBuilder.php
 application/Espo/ORM/Repository/Util.php
+application/Espo/ORM/Util.php
 application/Espo/ORM/Name/Attribute.php
 application/Espo/ORM/EntityCollection.php
 application/Espo/ORM/DataLoader/Loader.php

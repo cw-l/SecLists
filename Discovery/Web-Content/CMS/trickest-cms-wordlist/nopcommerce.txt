@@ -2334,7 +2334,6 @@ src/Presentation/Nop.Web/wwwroot/js/admin.common.js
 src/Presentation/Nop.Web/wwwroot/js/public.estimateshipping.popup.js
 src/Presentation/Nop.Web/wwwroot/js/public.menu.js
 src/Presentation/Nop.Web/wwwroot/js/admintour/admin.tour.common.js
-src/Presentation/Nop.Web/wwwroot/js/bbeditor/ed.js
 src/Presentation/Nop.Web/wwwroot/js/admin.table.js
 src/Presentation/Nop.Web/wwwroot/js/public.onepagecheckout.js
 src/Presentation/Nop.Web/wwwroot/js/public.ajaxcart.js
@@ -2547,6 +2546,7 @@ src/Presentation/Nop.Web.Framework/Events/RouteUrlEvent.cs
 src/Presentation/Nop.Web.Framework/Events/MenuItemInsertType.cs
 src/Presentation/Nop.Web.Framework/Events/BaseMenuItemCreatedEvent.cs
 src/Presentation/Nop.Web.Framework/Events/GenericRoutingEvent.cs
+src/Presentation/Nop.Web.Framework/Events/ClientModelValidatorsCreatedEvent.cs
 src/Presentation/Nop.Web.Framework/Events/ModelReceivedEvent.cs
 src/Presentation/Nop.Web.Framework/Events/EventPublisherExtensions.cs
 src/Presentation/Nop.Web.Framework/Events/ProductSearchEvent.cs
@@ -2558,6 +2558,19 @@ src/Presentation/Nop.Web.Framework/Extensions/CommonExtensions.cs
 src/Presentation/Nop.Web.Framework/Extensions/MigrationExtensions.cs
 src/Presentation/Nop.Web.Framework/AreaNames.cs
 src/Presentation/Nop.Web.Framework/RemotePost.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/NopClientModelValidatorProvider.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/RangeClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/RequiredClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/RegexClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/RangeMinClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/ClientValidatorBase.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/CreditCardClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/MinLengthClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/StringLengthClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/RangeMaxClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/EmailClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/EqualToClientValidator.cs
+src/Presentation/Nop.Web.Framework/ClientsideFluentValidation/Validators/MaxLengthClientValidator.cs
 src/Presentation/Nop.Web.Framework/Globalization/NopSeoUrlCultureProvider.cs
 src/Presentation/Nop.Web.Framework/Globalization/AcceptLanguageHeaderRequestCultureProvider.cs
 src/Presentation/Nop.Web.Framework/Infrastructure/Extensions/ApplicationPartManagerExtensions.cs
@@ -2645,10 +2658,8 @@ src/Presentation/Nop.Web.Framework/Mvc/NullJsonResult.cs
 src/Presentation/Nop.Web.Framework/Mvc/Razor/NopRazorPage.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/IModelAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/ModelStateExtensions.cs
-src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/Binders/InvariantNumberModelBinder.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/Binders/NopModelBinderProvider.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/Binders/CustomPropertiesModelBinder.cs
-src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/Binders/InvariantNumberModelBinderProvider.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/Binders/StringModelBinder.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/NopResourceDisplayNameAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/ModelBinding/NopMetadataProvider.cs
@@ -2675,6 +2686,7 @@ src/Presentation/Nop.Web.Framework/Mvc/Filters/ValidateCaptchaAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/ValidateVendorAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/CheckPermissionAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/CheckAccessPublicStoreAttribute.cs
+src/Presentation/Nop.Web.Framework/Mvc/Filters/AutoValidationAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/ParameterBasedOnFormNameAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/Filters/CheckAccessClosedStoreAttribute.cs
 src/Presentation/Nop.Web.Framework/Mvc/RssActionResult.cs
@@ -2750,7 +2762,6 @@ src/Presentation/Nop.Web.Framework/TagHelpers/Public/NopGenerateCaptchaTagHelper
 src/Presentation/Nop.Web.Framework/TagHelpers/Public/LabelTagHelper.cs
 src/Presentation/Nop.Web.Framework/TagHelpers/Public/TextAreaTagHelper.cs
 src/Presentation/Nop.Web.Framework/TagHelpers/Public/InputTagHelper.cs
-src/Presentation/Nop.Web.Framework/TagHelpers/Public/NopBBCodeEditorTagHelper.cs
 src/Presentation/Nop.Web.Framework/TagHelpers/Shared/NopAntiForgeryTokenTagHelper.cs
 src/Presentation/Nop.Web.Framework/TagHelpers/Shared/NopLinkTagHelper.cs
 src/Presentation/Nop.Web.Framework/TagHelpers/Shared/NopScriptTagHelper.cs
@@ -3144,21 +3155,7 @@ src/Libraries/Nop.Services/Stores/NopStoreDefaults.cs
 src/Libraries/Nop.Services/Stores/Caching/StoreMappingCacheEventConsumer.cs
 src/Libraries/Nop.Services/Stores/Caching/StoreCacheEventConsumer.cs
 src/Libraries/Nop.Services/BaseNopResult.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/CodeFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/SourceFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/CSharpFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/JavaScriptFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/CodeFormatHelper.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/CLikeFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/MshFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/HighlightOptions.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/HtmlFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/VisualBasicFormat.cs
-src/Libraries/Nop.Services/Html/CodeFormatter/TsqlFormat.cs
-src/Libraries/Nop.Services/Html/ResolveLinksHelper.cs
 src/Libraries/Nop.Services/Html/HtmlFormatter.cs
-src/Libraries/Nop.Services/Html/BBCodeHelper.cs
-src/Libraries/Nop.Services/Html/IBBCodeHelper.cs
 src/Libraries/Nop.Services/Html/IHtmlFormatter.cs
 src/Libraries/Nop.Services/Connected Services/EuropaCheckVatService/ConnectedService.json
 src/Libraries/Nop.Services/Connected Services/EuropaCheckVatService/Reference.cs
@@ -3932,6 +3929,7 @@ src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/PredefinedProductAttr
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/SpecificationAttributeValidatorTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Catalog/ManufacturerValidatorTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Validators/Blogs/BlogPostValidatorTests.cs
+src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Factories/CommonModelFactoryTests.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Admin/Readme.txt
 src/Tests/Nop.Tests/Nop.Web.Tests/Startup.cs
 src/Tests/Nop.Tests/Nop.Web.Tests/Public/TestWidgetPlugin.cs
@@ -4850,6 +4848,7 @@ src/Plugins/Nop.Plugin.Misc.Forums/Content/js/mdeditor/icons/image.svg
 src/Plugins/Nop.Plugin.Misc.Forums/Content/js/mdeditor/icons/code-block.svg
 src/Plugins/Nop.Plugin.Misc.Forums/Content/js/mdeditor/icons/code.svg
 src/Plugins/Nop.Plugin.Misc.Forums/Content/js/mdeditor/icons/list-ol.svg
+src/Plugins/Nop.Plugin.Misc.Forums/Content/js/bbeditor/ed.js
 src/Plugins/Nop.Plugin.Misc.Forums/Nop.Plugin.Misc.Forums.csproj
 src/Plugins/Nop.Plugin.Misc.Forums/ForumSettings.cs
 src/Plugins/Nop.Plugin.Misc.Forums/ForumDefaults.cs
@@ -4858,6 +4857,7 @@ src/Plugins/Nop.Plugin.Misc.Forums/Infrastructure/RouteProvider.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Infrastructure/NopStartup.cs
 src/Plugins/Nop.Plugin.Misc.Forums/ForumPlugin.cs
 src/Plugins/Nop.Plugin.Misc.Forums/plugin.json
+src/Plugins/Nop.Plugin.Misc.Forums/TagHelpers/NopBBCodeEditorTagHelper.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Admin/Models/ForumGroupModel.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Admin/Models/ForumListModel.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Admin/Models/ForumSearchModel.cs
@@ -4962,8 +4962,11 @@ src/Plugins/Nop.Plugin.Misc.Forums/Public/Views/_ViewImports.cshtml
 src/Plugins/Nop.Plugin.Misc.Forums/Services/Events/SitemapEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/Events/AdminMenuCreatedEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/Events/EventConsumer.cs
+src/Plugins/Nop.Plugin.Misc.Forums/Services/CSharpFormat.cs
+src/Plugins/Nop.Plugin.Misc.Forums/Services/BBCodeHelper.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/ForumPermissionConfigManager.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/ForumInstallService.cs
+src/Plugins/Nop.Plugin.Misc.Forums/Services/TextFormatType.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/ForumService.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/Caching/ForumCacheEventConsumer.cs
 src/Plugins/Nop.Plugin.Misc.Forums/Services/Caching/ForumGroupCacheEventConsumer.cs
